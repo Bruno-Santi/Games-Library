@@ -29,7 +29,13 @@ const getAllGames = async (gameName) => {
         };
       }
     );
-    return nombres.slice(0, 15);
+    const gamesFilteredDb = await Videogame.findAll({
+      where: {
+        name: gameName,
+      },
+    });
+
+    return [...gamesFilteredDb, ...gamesFilteredByName.slice(0, 15)];
   }
   const response = await axios(`https://api.rawg.io/api/games?key=${API_KEY}`);
   const apiGames = response.data.results;

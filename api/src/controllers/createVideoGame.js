@@ -20,8 +20,8 @@ const createVideoGame = async ({
     release_date,
     rating,
   });
-  const genres = await Genre.findAll({ where: { name: genre } });
-  newGame.addGenres(genres);
+  // const genres = await Genre.findAll({ where: { name: genre } });
+  newGame.addGenres(genre);
   return newGame;
 };
 

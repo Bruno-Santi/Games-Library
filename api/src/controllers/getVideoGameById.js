@@ -4,19 +4,11 @@ require("dotenv").config();
 const { API_KEY } = process.env;
 
 const getVideoGameById = async (id) => {
-  if (Number(id) === NaN) {
-    const dbGame = await Videogame.findByPk(Number(id), {
-      include: {
-        model: Genre,
-        attributes: ["name"],
-        through: {
-          attributes: [],
-        },
-      },
-    });
-    if (dbGame) {
-      return dbGame;
-    }
+  let regexUUID =
+    /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
+  if (regexUUID.test(id)) {
+    const dbGame = await Videogame.findByPk(id);
+    if (dbGame) return dbGame;
   }
   const apiGame = await axios(
     `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
@@ -41,9 +33,9 @@ const getVideoGameById = async (id) => {
       metacritic,
       genres,
     };
-  } else {
-    throw Error(`No se ha encontrado el juego con el id: ${id}`);
   }
+
+  return `No se ha encontrado el juego con el id: ${id}`;
 };
 
 module.exports = getVideoGameById;
