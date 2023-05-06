@@ -7,7 +7,12 @@ const saveGenresApiToDb = async (model) => {
     return name;
   });
   await model.bulkCreate(genreNames.map((name) => ({ name })));
-  return model.findAll();
+  return model.findAll({
+    include: {
+      model: model,
+      attributes: ["name"],
+    },
+  });
 };
 
 module.exports = saveGenresApiToDb;

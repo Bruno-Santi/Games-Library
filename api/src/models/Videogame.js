@@ -18,20 +18,19 @@ module.exports = (sequelize) => {
         unique: true,
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1234),
         allowNull: false,
       },
       platforms: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
-      image: {
+      background_image: {
         type: DataTypes.STRING,
       },
-      release_date: {
+      released: {
         type: DataTypes.STRING,
       },
-      rating: {
+      metacritic: {
         type: DataTypes.INTEGER,
       },
     },
