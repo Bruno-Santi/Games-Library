@@ -4,20 +4,24 @@ const Nav = () => {
   const location = useLocation();
   if (location.pathname === "/") return null;
   return (
-    <nav className={style.nav}>
-      <Link className={style.link} to="/home">
-        <span className={style.span}>HOME</span>
-      </Link>
-      <Link className={style.link} to="/form">
-        <span className={style.span}>FORM</span>
-      </Link>
-      <Link className={style.link} to="/about">
-        <span className={style.span}>ABOUT</span>
-      </Link>
-      <Link className={style.link} to="/">
-        <span className={style.span}>EXIT</span>
-      </Link>
-    </nav>
+    <div className={style.container}>
+      <nav className={style.nav}>
+        <Link className={style.link} to="/home">
+          <span className={style.span}>HOME</span>
+        </Link>
+        <Link className={style.link} to="/form">
+          <span className={style.span}>FORM</span>
+        </Link>
+        <Link className={style.link} to="/about">
+          <span className={style.span}>ABOUT</span>
+        </Link>
+        <Link className={style.link} to="/">
+          <span className={style.span} style={{ color: "red" }}>
+            EXIT
+          </span>
+        </Link>
+      </nav>
+    </div>
   );
 };
 

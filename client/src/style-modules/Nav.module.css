@@ -1,11 +1,20 @@
 @font-face {
-  font-family: Pixel;
-  src: url("../fonts/PixelGamingRegular.ttf");
+  font-family: "First Job";
+  src: url("../fonts/FirstJob-X8rP.ttf");
 }
-
+.container {
+  display: flex;
+  justify-content: center;
+}
 .nav {
+  position: absolute;
+  border-radius: 20px;
+  width: 80%;
   padding: 28px;
-  background-color: violet;
+  margin-top: 25px;
+  backdrop-filter: blur(30px);
+  border: solid red;
+  border-width: 2px;
   display: flex;
   justify-content: center;
 }
@@ -13,28 +22,17 @@
 .span {
   padding: 30px;
   text-decoration: none;
-  color: white;
+  color: #cec4c2;
   font-size: 45px;
+  text-shadow: 1px 1px 1px black;
   display: flex;
   text-align: center;
-  font-family: Pixel;
+  transition: all 0.2s ease-in-out;
+  font-family: "First Job";
+}
+.span:hover {
+  transform: scale(1.1);
 }
 .link {
   text-decoration: none;
-}
-.span {
-  --s: 0em; /* the thickness of the line */
-  --c: green; /* the color */
-
-  color: #3465;
-  padding-bottom: var(--s);
-  background: linear-gradient(90deg, var(--c) 50%, #000 0)
-      calc(100% - var(--_p, 0%)) / 200% 100%,
-    linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
-  -webkit-background-clip: text, padding-box;
-  background-clip: text, padding-box;
-  transition: 0.5s;
-}
-.span:hover {
-  --_p: 100%;
 }
