@@ -1,0 +1,40 @@
+@font-face {
+  font-family: Pixel;
+  src: url("../fonts/PixelGamingRegular.ttf");
+}
+
+.nav {
+  padding: 28px;
+  background-color: violet;
+  display: flex;
+  justify-content: center;
+}
+
+.span {
+  padding: 30px;
+  text-decoration: none;
+  color: white;
+  font-size: 45px;
+  display: flex;
+  text-align: center;
+  font-family: Pixel;
+}
+.link {
+  text-decoration: none;
+}
+.span {
+  --s: 0em; /* the thickness of the line */
+  --c: green; /* the color */
+
+  color: #3465;
+  padding-bottom: var(--s);
+  background: linear-gradient(90deg, var(--c) 50%, #000 0)
+      calc(100% - var(--_p, 0%)) / 200% 100%,
+    linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
+  -webkit-background-clip: text, padding-box;
+  background-clip: text, padding-box;
+  transition: 0.5s;
+}
+.span:hover {
+  --_p: 100%;
+}

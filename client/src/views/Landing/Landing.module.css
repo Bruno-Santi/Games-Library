@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "First Job";
+  src: url("../../fonts/FirstJob-X8rP.ttf");
+}
+@font-face {
+  font-family: Manrope;
+  src: url("../../fonts/Manrope-Medium.ttf");
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../img/wallpaper.png");
+}
+
+.buttonHome {
+  position: relative;
+  font-size: 50px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.titulos {
+  color: #cec4c2;
+  font-size: 80px;
+  margin-top: -220px;
+}
+
+.texto {
+  margin-bottom: -150px;
+  font-family: Manrope;
+}
+.texto2 {
+  color: #cec4c2;
+  text-underline-position: auto;
+  font-family: Manrope;
+}
+.slideTop {
+  font-family: "First Job";
+  font-size: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #333333;
+  border-radius: 0px;
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+  border: 2px solid #333333;
+  transition: 0.3s;
+  box-shadow: 5px 5px 0px 0px rgb(204, 61, 61);
+  background-color: #cec4c2;
+  margin-top: 20px;
+  padding: 40px;
+  -webkit-animation: slide-top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: slide-top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+}
+
+.slideTop:hover {
+  box-shadow: 0 0 #333;
+  color: #cec4c2;
+  background-color: #333;
+}
