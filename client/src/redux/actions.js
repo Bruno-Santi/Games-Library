@@ -1,8 +1,8 @@
-import axios from "axios";
 const URL = "http://localhost:3001";
 // ! GET
 export const GET_GAMES = "GET_GAMES";
 export const GET_GAME_DETAIL = "GET_GAME_DETAIL";
+export const GET_GAMES_BY_NAME = "GET_GAMES_BY_NAME";
 export const GET_GENRES = "GET_GENRES";
 export const GET_PLATFORMS = "GET_PLATFORMS";
 // ! FILTERS
@@ -10,7 +10,7 @@ export const FILTER_GAMES_BY_GENRE = "FILTER_GAMES_BY_GENRE";
 export const FILTER_GAMES_BY_PLATFORM = "FILTER_GAMES_BY_PLATFORM";
 export const FILTER_GAMES_API_DB = "FILTER_GAMES_API_DB";
 // ! ORDERS
-export const ORDER_GAMES_ASCEN_DESCEN = "ORDER_GAMES_ASCEN_DESCEN";
+export const ORDER_GAMES_ALPHABETIC = "ORDER_GAMES_ALPHABETIC";
 export const ORDER_GAMES_RATING = "ORDER_GAMES_RATING";
 // ! FORM
 export const SEND_FORM_DATA_REQUEST = "SEND_FORM_DATA_REQUEST";
@@ -39,6 +39,13 @@ export const getGameDetail = (id) => {
   };
 };
 
+export const getGamesByName = (name) => {
+  return function (dispatch) {
+    fetch(`${URL}/videogames?name=${name}`)
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: GET_GAMES_BY_NAME, payload: data }));
+  };
+};
 export const getGenres = () => {
   return function (dispatch) {
     fetch(`${URL}/genres`)
@@ -80,9 +87,9 @@ export const filterGamesApiDb = (where) => {
 
 // ! ///////////////// ORDERS ////////////////
 
-export const orderGamesAscenDescen = (typeOfOrder) => {
+export const orderGamesAlphabetic = (typeOfOrder) => {
   return {
-    type: ORDER_GAMES_ASCEN_DESCEN,
+    type: ORDER_GAMES_ALPHABETIC,
     payload: typeOfOrder,
   };
 };

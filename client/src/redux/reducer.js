@@ -1,12 +1,13 @@
 import {
   GET_GAMES,
   GET_GAME_DETAIL,
+  GET_GAMES_BY_NAME,
   GET_GENRES,
   GET_PLATFORMS,
   FILTER_GAMES_BY_GENRE,
   FILTER_GAMES_BY_PLATFORM,
   FILTER_GAMES_API_DB,
-  ORDER_GAMES_ASCEN_DESCEN,
+  ORDER_GAMES_ALPHABETIC,
   ORDER_GAMES_RATING,
   SEND_FORM_DATA_REQUEST,
   SEND_FORM_DATA_SUCCESS,
@@ -38,6 +39,9 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_GENRES:
       return { ...state, genres: action.payload };
+
+    case GET_GAMES_BY_NAME:
+      return { ...state, users: action.payload };
 
     case GET_PLATFORMS:
       return { ...state, platforms: action.payload };
@@ -76,26 +80,26 @@ const rootReducer = (state = initialState, action) => {
 
     //***************  ORDERS  ************** */
 
-    case ORDER_GAMES_ASCEN_DESCEN:
-      if (action.payload === "vacio") {
+    case ORDER_GAMES_ALPHABETIC:
+      if (action.payload === "empty") {
         return {
           ...state,
           games: state.gamesBackup,
         };
       }
-      if (action.payload === "ascendente") {
+      if (action.payload === "ascending") {
         state.games.sort((a, b) =>
           a.name < b.name ? -1 : a.name > b.name ? 1 : 0
         );
       }
-      if (action.payload === "descendente") {
+      if (action.payload === "descending") {
         state.games.sort((a, b) =>
           a.name > b.name ? -1 : a.name < b.name ? 1 : 0
         );
       }
       return { ...state };
     case ORDER_GAMES_RATING:
-      if (action.payload === "vacio") {
+      if (action.payload === "empty") {
         return {
           ...state,
           games: state.gamesBackup,
