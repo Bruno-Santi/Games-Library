@@ -7,17 +7,6 @@
   src: url("../../fonts/Manrope-Medium.ttf");
 }
 
-.background {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("../../img/wallpaper.png");
-}
-
 .buttonHome {
   position: relative;
   font-size: 50px;

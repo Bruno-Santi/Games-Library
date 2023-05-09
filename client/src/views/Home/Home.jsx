@@ -10,9 +10,15 @@ import FilterApiDb from "../../components/filters/FilterApiDb";
 import OrderAlphabetic from "../../components/orders/OrderAlphabetic";
 import OrderRating from "../../components/orders/OrderRating";
 import Paginate from "../../components/Paginate";
-import { getGames } from "../../redux/actions";
-import HandleChangeFilter from "../../utils/HandleChangeFilter";
-import HandleChangeOrder from "../../utils/HandleChandeOrder";
+import {
+  getGames,
+  orderGamesAlphabetic,
+  orderGamesRating,
+  filterGamesByGenre,
+  filterGamesByPlatform,
+  filterGamesApiDb,
+} from "../../redux/actions";
+
 const Home = () => {
   let games = useSelector((state) => state.games);
   const dispatch = useDispatch();
@@ -50,23 +56,36 @@ const Home = () => {
       });
   }, [dispatch]);
 
+  const handleChangeFilter = (e) => {
+    const { name, value } = e.target;
+    setFilters({ ...filters, [name]: value });
+    if (name === "genres") dispatch(filterGamesByGenre(value));
+    if (name === "platforms") dispatch(filterGamesByPlatform(value));
+    if (name === "gamesFrom") dispatch(filterGamesApiDb(value));
+  };
+  const handleChangeOrder = (e) => {
+    const { name, value } = e.target;
+    setOrder({ ...order, [name]: value });
+
+    if (name === "orderBy") dispatch(orderGamesAlphabetic(value));
+    if (name === "orderByRating") dispatch(orderGamesRating(value));
+  };
+
   return (
-    <div className={style.background} style={{ height: "100vh" }}>
+    <div className={style.background} style={{ marginTop: "150px" }}>
       {loading ? (
         <Loading />
       ) : (
         <>
           <SearchBar />
-          <div
-            onChange={(event) => HandleChangeFilter(event, filters, setFilters)}
-          >
-            <h3>Filters</h3>
+          <h3>Filters</h3>
+          <div onChange={handleChangeFilter}>
             <FilterGenreSelect />
             <FilterPlatformSelect />
             <FilterApiDb />
           </div>
           <button onClick={handleClick}>Reset Filters</button>
-          <div onChange={(event) => HandleChangeOrder(event, order, setOrder)}>
+          <div onChange={handleChangeOrder}>
             <h3>Orders</h3>
             <OrderAlphabetic />
             <OrderRating />

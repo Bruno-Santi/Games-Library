@@ -1,7 +1,40 @@
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { getGameDetail } from "../../redux/actions";
+import Loading from "../../components/Loading";
+import PlatformList from "./PlatformList";
+import GenresList from "./GenresList";
+import DescriptionFormatter from "./DescriptionFormatter";
+import DeleteDbGame from "./DeleteDbGame";
 const Detail = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const game = useSelector((state) => state.gameDetail);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    dispatch(getGameDetail(id));
+    setTimeout(() => {
+      setLoading(false);
+    }, 2500);
+  }, [dispatch]);
+
   return (
     <>
-      <h1> Estamos en Detail </h1>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <h1>{game.name}</h1>
+          <PlatformList platforms={game.platforms} />
+          <GenresList genres={game.genres} />
+          <h3>{game.released}</h3>
+          <DescriptionFormatter description={game.description} />
+
+          <img src={game?.background_image} alt="game" />
+          <DeleteDbGame id={game.id} />
+        </>
+      )}
     </>
   );
 };

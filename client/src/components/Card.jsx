@@ -1,3 +1,4 @@
+import style from "../style-modules/Card.module.css";
 import { Link } from "react-router-dom";
 const Card = (props) => {
   const {
@@ -11,7 +12,7 @@ const Card = (props) => {
     metacritic,
   } = props;
   return (
-    <div>
+    <div className={style.container}>
       <Link to={`/detail/${id}`}>
         <h4>{name}</h4>
       </Link>

@@ -1,0 +1,7 @@
+.container {
+  display: inline-flex;
+  backdrop-filter: blur(12px);
+  border: 5px solid #14101080;
+  margin: 20px;
+  border-radius: 15px;
+}

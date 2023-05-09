@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getGamesByName } from "../redux/actions";
+import { getGamesByName, getGames } from "../redux/actions";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -9,9 +9,13 @@ const SearchBar = () => {
   const handleChange = (event) => {
     const { value } = event.target;
     setName(value);
+    if (!value) {
+      dispatch(getGames());
+    }
   };
   const handleClick = () => {
     dispatch(getGamesByName(name));
+    console.log(name);
   };
 
   return (

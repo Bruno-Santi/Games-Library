@@ -41,7 +41,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, genres: action.payload };
 
     case GET_GAMES_BY_NAME:
-      return { ...state, users: action.payload };
+      return { ...state, games: action.payload };
 
     case GET_PLATFORMS:
       return { ...state, platforms: action.payload };
@@ -107,12 +107,12 @@ const rootReducer = (state = initialState, action) => {
       }
       if (action.payload === "mintomax") {
         state.games.sort((a, b) =>
-          a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+          a.metacritic < b.metacritic ? -1 : a.name > b.name ? 1 : 0
         );
       }
       if (action.payload === "maxtomin") {
         state.games.sort((a, b) =>
-          a.name > b.name ? -1 : a.name < b.name ? 1 : 0
+          a.metacritic > b.metacritic ? -1 : a.name < b.name ? 1 : 0
         );
       }
       return { ...state };
