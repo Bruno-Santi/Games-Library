@@ -77,11 +77,63 @@ const rootReducer = (state = initialState, action) => {
     //***************  ORDERS  ************** */
 
     case ORDER_GAMES_ASCEN_DESCEN:
+      if (action.payload === "vacio") {
+        return {
+          ...state,
+          games: state.gamesBackup,
+        };
+      }
+      if (action.payload === "ascendente") {
+        state.games.sort((a, b) =>
+          a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+        );
+      }
+      if (action.payload === "descendente") {
+        state.games.sort((a, b) =>
+          a.name > b.name ? -1 : a.name < b.name ? 1 : 0
+        );
+      }
+      return { ...state };
+    case ORDER_GAMES_RATING:
+      if (action.payload === "vacio") {
+        return {
+          ...state,
+          games: state.gamesBackup,
+        };
+      }
+      if (action.payload === "mintomax") {
+        state.games.sort((a, b) =>
+          a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+        );
+      }
+      if (action.payload === "maxtomin") {
+        state.games.sort((a, b) =>
+          a.name > b.name ? -1 : a.name < b.name ? 1 : 0
+        );
+      }
+      return { ...state };
 
-    default:
+    //**************  FORM  ************** */
+
+    case SEND_FORM_DATA_REQUEST:
       return {
         ...state,
+        sendingFormData: true,
       };
+    case SEND_FORM_DATA_SUCCESS:
+      return {
+        ...state,
+        sendingFormData: false,
+        formDataResponse: action.payload,
+      };
+    case SEND_FORM_DATA_FAILURE:
+      return {
+        ...state,
+        sendingFormData: false,
+        formDataError: action.payload,
+      };
+    default:
+      return { ...state };
   }
 };
 
