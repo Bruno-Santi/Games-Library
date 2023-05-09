@@ -5,6 +5,7 @@ const getAllGames = require("../controllers/getAllGames");
 const getVideoGameById = require("../controllers/getVideoGameById");
 const createVideoGame = require("../controllers/createVideoGame");
 const getGamesByGenre = require("../controllers/getGamesByGenre");
+const deleteVideoGame = require("../controllers/deleteVideoGame");
 
 videoGamesRoute.get("/genre", async (req, res) => {
   const { name } = req.query;
@@ -62,4 +63,13 @@ videoGamesRoute.post("/", validate, async (req, res) => {
   }
 });
 
+videoGamesRoute.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const gameDeleted = await deleteVideoGame(id);
+    res.status(200).json(gameDeleted);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 module.exports = videoGamesRoute;

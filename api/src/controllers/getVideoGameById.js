@@ -7,7 +7,16 @@ const getVideoGameById = async (id) => {
   let regexUUID =
     /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
   if (regexUUID.test(id)) {
-    const dbGame = await Videogame.findByPk(id);
+    const dbGame = await Videogame.findByPk(id, {
+      include: [
+        {
+          model: Genre,
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    });
     if (dbGame) return dbGame;
   }
   const apiGame = await axios(
