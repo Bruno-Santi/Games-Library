@@ -1,14 +1,21 @@
 require("dotenv").config();
 const { API_KEY } = process.env;
-const axios = require("axios");
 
-const getAllPlatforms = async () => {
+const getAllPlatforms = () => {
   const platforms = new Set();
-  const response = await axios(`https://api.rawg.io/api/games?key=${API_KEY}`);
-  response.data.results.forEach((game) =>
-    game.platforms.forEach((platform) => platforms.add(platform.platform.name))
-  );
 
-  return Array.from(platforms);
+  return fetch(`https://api.rawg.io/api/games?key=${API_KEY}`)
+    .then((response) => response.json())
+    .then((data) => {
+      data.results.forEach((game) =>
+        game.platforms.forEach((platform) =>
+          platforms.add(platform.platform.name)
+        )
+      );
+
+      return Array.from(platforms);
+    })
+    .catch((error) => console.log(error));
 };
+
 module.exports = getAllPlatforms;

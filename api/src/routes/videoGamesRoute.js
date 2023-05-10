@@ -57,7 +57,7 @@ videoGamesRoute.post("/", validate, async (req, res) => {
       metacritic,
       genre,
     });
-    res.status(200).json({ created: "ok", newVideoGame });
+    res.status(200).json(`The game ${name} has been created correctly`);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
