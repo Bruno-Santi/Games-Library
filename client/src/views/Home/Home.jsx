@@ -77,19 +77,24 @@ const Home = () => {
         <Loading />
       ) : (
         <>
+          <div className={style.container}>
+            <h3 className={style.text}>Filters</h3>
+            <div className={style.filters} onChange={handleChangeFilter}>
+              <FilterGenreSelect />
+              <FilterPlatformSelect />
+              <FilterApiDb />
+              <button className={style.myButton} onClick={handleClick}>
+                Reset Filters
+              </button>
+            </div>
+
+            <h3 className={style.text}>Orders</h3>
+            <div className={style.filters} onChange={handleChangeOrder}>
+              <OrderAlphabetic />
+              <OrderRating />
+            </div>
+          </div>
           <SearchBar />
-          <h3>Filters</h3>
-          <div onChange={handleChangeFilter}>
-            <FilterGenreSelect />
-            <FilterPlatformSelect />
-            <FilterApiDb />
-          </div>
-          <button onClick={handleClick}>Reset Filters</button>
-          <div onChange={handleChangeOrder}>
-            <h3>Orders</h3>
-            <OrderAlphabetic />
-            <OrderRating />
-          </div>
           <Cards games={gamesSliced} />
           <Paginate page={page} setPage={setPage} maximum={maximum} />
         </>

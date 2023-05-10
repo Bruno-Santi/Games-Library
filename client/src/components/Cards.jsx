@@ -1,9 +1,10 @@
 import Card from "./Card";
+import style from "../style-modules/Cards.module.css";
 const Cards = (props) => {
   const { games } = props;
 
   return (
-    <>
+    <div className={style.container}>
       {games?.map((game) => {
         return (
           <Card
@@ -16,7 +17,7 @@ const Cards = (props) => {
           />
         );
       })}
-    </>
+    </div>
   );
 };
 

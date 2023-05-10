@@ -1,7 +1,68 @@
+@font-face {
+  font-family: Manrope;
+  src: url("../fonts/Manrope-Medium.ttf");
+}
+@font-face {
+  font-family: "First Job";
+  src: url("../fonts/FirstJob-X8rP.ttf");
+}
+@font-face {
+  font-family: "Speed";
+  src: url("../fonts/SpeedrushRegular-qZWp6.otf");
+}
+
+.title {
+  font-family: "Speed";
+  text-decoration: none;
+  margin-top: -20px;
+  text-shadow: 1px 1px 1px black;
+  transition: all 0.2s ease-in-out;
+  height: 80px;
+}
+.title:hover {
+  transform: scale(1.1);
+}
+.link {
+  text-decoration: none;
+  color: #cec4c2;
+
+  font-size: 37px;
+}
+.genres {
+  font-family: "First Job";
+  font-size: 30px;
+  color: #cec4c2;
+}
+.rating {
+  font-family: "Manrope";
+  font-size: 20px;
+  color: #cec4c2;
+  margin-top: -20px;
+}
 .container {
   display: inline-flex;
-  backdrop-filter: blur(12px);
+  background-color: rgba(222, 18, 24, 0.54);
   border: 5px solid #14101080;
   margin: 20px;
   border-radius: 15px;
+  width: 420px;
+  padding: 30px;
+  justify-content: center;
+  box-shadow: 14px 19px 25px -6px rgba(224, 19, 19, 0.6);
+  -webkit-box-shadow: 14px 19px 25px -6px rgba(224, 19, 19, 0.6);
+  -moz-box-shadow: 14px 19px 25px -6px rgba(224, 19, 19, 0.6);
+}
+
+.contenedor {
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  height: 500px;
+}
+
+.image {
+  background-repeat: initial;
+  margin: 0 auto;
+  padding-top: -20px;
 }

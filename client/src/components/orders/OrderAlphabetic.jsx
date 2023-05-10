@@ -1,15 +1,19 @@
+import style from "../../views/Home/Home.module.css";
+
 const OrderAlphabetic = () => {
   return (
     <div>
-      <label for="orderBy">Choose an order: </label>
-      <select name="orderBy">
-        <option key={"300"} value="empty">
+      <label className={style.text2} for="orderBy">
+        ALPHABETIC ORDER
+      </label>
+      <select className={style.input} name="orderBy">
+        <option className={style.inputText} key={"300"} value="empty">
           -
         </option>
-        <option key={"301"} value="ascending">
+        <option className={style.inputText} key={"301"} value="ascending">
           Ascending
         </option>
-        <option key={"302"} value="descending">
+        <option className={style.inputText} key={"302"} value="descending">
           Descending
         </option>
       </select>

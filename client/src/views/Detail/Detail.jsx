@@ -7,6 +7,7 @@ import PlatformList from "./PlatformList";
 import GenresList from "./GenresList";
 import DescriptionFormatter from "./DescriptionFormatter";
 import DeleteDbGame from "./DeleteDbGame";
+import style from "../Home/Home.module.css";
 const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const Detail = () => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <div className={style.detailContainer}>
           <h1>{game.name}</h1>
           <PlatformList platforms={game.platforms} />
           <GenresList genres={game.genres} />
@@ -33,7 +34,7 @@ const Detail = () => {
 
           <img src={game?.background_image} alt="game" />
           <DeleteDbGame id={game.id} />
-        </>
+        </div>
       )}
     </>
   );

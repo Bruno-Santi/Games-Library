@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-image: url("../src/img/wallpaper.png");
+  background-attachment: fixed;
 }
 
 @media (prefers-reduced-motion: no-preference) {

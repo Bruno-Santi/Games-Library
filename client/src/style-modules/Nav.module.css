@@ -5,11 +5,13 @@
 .container {
   display: flex;
   justify-content: center;
+  height: 40px;
 }
 .nav {
   position: absolute;
   border-radius: 20px;
-  width: 80%;
+  width: 62%;
+  height: 100px;
   padding: 28px;
   margin-top: 25px;
   backdrop-filter: blur(30px);

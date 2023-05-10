@@ -1,3 +1,100 @@
+@font-face {
+  font-family: "First Job";
+  src: url("../../fonts/FirstJob-X8rP.ttf");
+}
+@font-face {
+  font-family: Manrope;
+  src: url("../../fonts/Manrope-Medium.ttf");
+}
 .background {
   min-height: 100vh;
+}
+
+.container {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 62%;
+  margin: 50px;
+  padding: 20px;
+  backdrop-filter: blur(30px);
+  border: solid rgba(255, 0, 0, 0.5);
+  border-width: 3.5px;
+  border-radius: 20px;
+}
+
+.filters {
+  display: inline-flex;
+}
+
+.input {
+  width: 150px;
+  height: 30px;
+  display: inline-flex;
+  font-family: Manrope;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #ce0d0d;
+  background-color: rgba(222, 18, 24, 0.54);
+  color: black;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 12px;
+  margin: 15px;
+}
+
+.text {
+  color: #cec4c2;
+  font-family: "First Job";
+  font-size: 35px;
+  padding: 15px;
+}
+
+.text2 {
+  color: #cec4c2;
+  display: grid;
+  padding: 7px;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.myButton {
+  box-shadow: inset 0px 1px 0px 0px #cf866c;
+  background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+  background-color: rgba(222, 18, 24, 0.54);
+  border-radius: 9px;
+  border: 1px solid #ce0d0d;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: "Manrope";
+  font-size: 18px;
+  padding: 30px 32px;
+  margin: 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #854629;
+}
+.myButton:hover {
+  background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+  background-color: #bc3315;
+}
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+.searchBar {
+  background-color: rgba(222, 18, 24, 0.54);
+  padding: 30px;
+  font-size: 22px;
+  color: #cec4c2;
+  font-family: Manrope;
+  border-radius: 13px;
+}
+
+.inputText {
+  text-align: center;
+  font-size: 18px;
+  font-family: Manrope;
 }

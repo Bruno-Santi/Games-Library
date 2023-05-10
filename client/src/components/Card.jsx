@@ -13,20 +13,23 @@ const Card = (props) => {
   } = props;
   return (
     <div className={style.container}>
-      <Link to={`/detail/${id}`}>
-        <h4>{name}</h4>
-      </Link>
-      <p>{description}</p>
-      <p>{released}</p>
-      <img
-        src={background_image}
-        width="200"
-        height="200"
-        alt="videogame alt"
-      />
-      <p>{genres?.join(" ")}</p>
-      <p>{platform}</p>
-      <p>Rating {metacritic}</p>
+      <div className={style.contenedor}>
+        <Link className={style.link} to={`/detail/${id}`}>
+          <h4 className={style.title}>{name}</h4>
+        </Link>
+        <p>{description}</p>
+        <p>{released}</p>
+        <img
+          className={style.image}
+          src={background_image}
+          width="450"
+          height="300"
+          alt="videogame alt"
+        />
+        <p className={style.genres}>{genres?.join(" ")}</p>
+        <p>{platform}</p>
+        <p className={style.rating}>Rating {metacritic}</p>
+      </div>
     </div>
   );
 };
