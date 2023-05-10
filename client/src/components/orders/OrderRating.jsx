@@ -6,7 +6,7 @@ const OrderRating = () => {
         RATING ORDER
       </label>
       <select className={style.input} name="orderByRating">
-        <option className={style.inputText} value="-">
+        <option className={style.inputText} value="empty">
           -
         </option>
         <option className={style.inputText} value="mintomax">

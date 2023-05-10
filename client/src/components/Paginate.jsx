@@ -1,4 +1,5 @@
 import { useState } from "react";
+import style from "../views/Home/Home.module.css";
 const Paginate = ({ page, setPage, maximum }) => {
   const [input, setInput] = useState(1);
   const nextPage = () => {
@@ -34,24 +35,25 @@ const Paginate = ({ page, setPage, maximum }) => {
   };
 
   return (
-    <div>
+    <div className={style.paginateContainer}>
       <button
-        style={{ backgroundColor: "black", padding: "40px" }}
+        className={style.myButton}
         disabled={page === 1}
         onClick={prevPage}
-      ></button>
+      >
+        PREV
+      </button>
 
-      <input
-        onChange={(e) => onChange(e)}
-        onKeyDown={(e) => onKeyDown(e)}
+      <p
+        style={{ width: "20px", color: "white" }}
         name="page"
         autoComplete="off"
-        value={input}
-      />
-      <p>de {maximum}</p>
+      >
+        {input}
+      </p>
+      <p style={{ color: "white" }}>de {maximum}</p>
       <button disabled={page === maximum} onClick={nextPage}>
-        {" "}
-        derecha{" "}
+        <div className={style.paginateButton}>NEXT</div>
       </button>
     </div>
   );

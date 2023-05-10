@@ -21,22 +21,31 @@ const Detail = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className={style.detailContainer}>
       {loading ? (
         <Loading />
       ) : (
-        <div className={style.detailContainer}>
-          <h1>{game.name}</h1>
-          <PlatformList platforms={game.platforms} />
-          <GenresList genres={game.genres} />
-          <h3>{game.released}</h3>
-          <DescriptionFormatter description={game.description} />
-
-          <img src={game?.background_image} alt="game" />
-          <DeleteDbGame id={game.id} />
+        <div className={style.containerDetail}>
+          <div className={style.detailData}>
+            <h1 className={style.h1}>{game.name}</h1>
+            <PlatformList platforms={game.platforms} />
+            <GenresList genres={game.genres} />
+            <h3>{game.released}</h3>
+          </div>
+          <div className={style.imageDescription}>
+            <div className={style.containerImg}>
+              <img
+                className={style.detailImage}
+                src={game?.background_image}
+                alt="game"
+              />
+              <DeleteDbGame id={game.id} />
+            </div>
+            <DescriptionFormatter description={game.description} />
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  align-items: center;
+}
+
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 30%;
+  color: white;
+  letter-spacing: 5px;
+  line-height: 20px;
+  padding: 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(30px);
+  border: solid rgba(255, 0, 0, 0.5);
+  box-shadow: 14px 19px 25px -6px rgba(224, 19, 19, 0.6);
+  -webkit-box-shadow: 14px 19px 25px -6px rgba(224, 19, 19, 0.6);
+  -moz-box-shadow: 14px 19px 25px -6px rgba(224, 19, 19, 0.6);
+}

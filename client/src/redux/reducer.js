@@ -12,6 +12,7 @@ import {
   SEND_FORM_DATA_REQUEST,
   SEND_FORM_DATA_SUCCESS,
   SEND_FORM_DATA_FAILURE,
+  DELETE_GAME,
 } from "./actions";
 let regexUUID =
   /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
@@ -21,6 +22,7 @@ const initialState = {
   gamesBackup: [],
   gameDetail: {},
   genres: [],
+  gameDeleted: "",
   platforms: [],
   sendingFormData: false,
   formDataResponse: null,
@@ -50,7 +52,8 @@ const rootReducer = (state = initialState, action) => {
 
     case FILTER_GAMES_BY_GENRE:
       if (!action.payload) return { ...state };
-      if (action.payload === "-") return { ...state, games: state.gamesBackup };
+      if (action.payload === "empty")
+        return { ...state, games: state.gamesBackup };
       const gamesFilteredGenre = state.games.filter((game) =>
         game.genres.includes(action.payload)
       );
@@ -58,7 +61,8 @@ const rootReducer = (state = initialState, action) => {
 
     case FILTER_GAMES_BY_PLATFORM:
       if (!action.payload) return { ...state };
-      if (action.payload === "-") return { ...state, games: state.gamesBackup };
+      if (action.payload === "empty")
+        return { ...state, games: state.gamesBackup };
       let gamesFilteredPlatform = state.games.filter((game) =>
         game.platforms.includes(action.payload)
       );
@@ -67,12 +71,13 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_GAMES_API_DB:
       let gamesApiDb;
       if (!action.payload) return { ...state };
-      if (action.payload === "-") return { ...state, games: state.gamesBackup };
+      if (action.payload === "empty")
+        return { ...state, games: state.gamesBackup };
       if (action.payload === "db") {
         gamesApiDb = state.games.filter((game) => regexUUID.test(game.id));
       }
       if (action.payload === "api") {
-        gamesApiDb = state.games.filter(
+        gamesApiDb = state.gamesBackup.filter(
           (game) => regexUUID.test(game.id) === false
         );
       }
@@ -135,6 +140,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         sendingFormData: false,
         formDataError: action.payload,
+      };
+    case DELETE_GAME:
+      return {
+        ...state,
+        gameDeleted: action.payload,
       };
     default:
       return { ...state };

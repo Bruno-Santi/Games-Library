@@ -13,9 +13,8 @@ const SearchBar = () => {
       dispatch(getGames());
     }
   };
-  const handleClick = () => {
+  const handleClick = (e) => {
     dispatch(getGamesByName(name));
-    console.log(name);
   };
 
   return (
@@ -28,13 +27,21 @@ const SearchBar = () => {
         className={style.searchBar}
       ></input>
       {name ? (
-        <button className={style.myButton} onClick={handleClick}>
-          Search
-        </button>
+        <>
+          <button
+            name="searchButton"
+            className={style.myButton}
+            onClick={handleClick}
+          >
+            Search
+          </button>
+        </>
       ) : (
-        <button className={style.myButton} type="button" disabled>
-          Search
-        </button>
+        <>
+          <button className={style.myButtonDisabled} type="button" disabled>
+            Search
+          </button>
+        </>
       )}
     </div>
   );

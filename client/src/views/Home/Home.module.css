@@ -15,7 +15,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 62%;
+  width: 100vh;
   margin: 50px;
   padding: 20px;
   backdrop-filter: blur(30px);
@@ -97,4 +97,125 @@
   text-align: center;
   font-size: 18px;
   font-family: Manrope;
+}
+
+.detailContainer {
+  display: inline-flex;
+  margin: 0 auto;
+
+  height: 100vh;
+}
+
+.detailImage {
+  width: 900px;
+  height: 600px;
+  border-radius: 15px;
+  box-shadow: 14px 19px 25px -6px rgba(224, 19, 19, 0.6);
+  -webkit-box-shadow: 14px 19px 25px -6px rgba(224, 19, 19, 0.6);
+  -moz-box-shadow: 14px 19px 25px -6px rgba(224, 19, 19, 0.6);
+}
+
+.containerDetail {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.detailData {
+  display: grid;
+  flex-direction: column;
+  margin: 0;
+  margin-top: -100px;
+  color: white;
+  width: 1500px;
+  padding-bottom: 80px;
+}
+
+.gameDeleted {
+  color: red;
+}
+
+.description {
+  display: inline-flex;
+  align-items: center;
+  font-size: 22px;
+  font-family: Manrope;
+  width: 800px;
+  font-weight: 800;
+  margin: 0 auto;
+  color: white;
+  backdrop-filter: blur(30px);
+  border: solid rgba(255, 0, 0, 0.5);
+  border-width: 3.5px;
+  padding: 30px;
+  margin-left: 50px;
+  border-radius: 15px;
+}
+
+.h3 {
+  font-size: 40px;
+  color: #cec4c2;
+  font-family: Manrope;
+  margin-bottom: 10px;
+}
+
+.h1 {
+  color: #cec4c2;
+  font-size: 80px;
+  font-family: "First Job";
+  margin-left: 60px;
+  margin-bottom: -50px;
+  text-decoration: underline;
+  text-decoration-color: red;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+.imageDescription {
+  display: inline-flex;
+}
+
+.paginateContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 40px;
+}
+
+.paginateButton {
+  box-shadow: inset 0px 1px 0px 0px #cf866c;
+  background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+  background-color: rgba(222, 18, 24, 0.54);
+  border-radius: 9px;
+  border: 1px solid #ce0d0d;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: "Manrope";
+  font-size: 18px;
+  padding: 30px 32px;
+  margin: 0px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #854629;
+}
+
+.myButtonDisabled {
+  box-shadow: inset 0px 1px 0px 0px #cf866c;
+  background: grey;
+  background-color: grey;
+  border-radius: 9px;
+  border: 1px solid #ce0d0d;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: "Manrope";
+  font-size: 18px;
+  padding: 30px 32px;
+  margin: 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #854629;
 }

@@ -27,7 +27,7 @@ const Home = () => {
   const [order, setOrder] = useState("");
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(15);
-  const maximum = Math.ceil(games?.length / page);
+  const maximum = Math.ceil(games?.length / perPage);
   let gamesSliced = games
     ?.slice((page - 1) * perPage, (page - 1) * perPage + perPage)
     .map((game) => {
@@ -42,18 +42,24 @@ const Home = () => {
     });
 
   const handleClick = () => {
-    dispatch(getGames());
+    setLoading(true);
+    dispatch(getGames()).then(() => {
+      setLoading(false);
+    });
     setFilters("");
   };
 
   useEffect(() => {
-    dispatch(getGames())
-      .then(() => {
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (games.length < 1) {
+      dispatch(getGames())
+        .then(() => {
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    setLoading(false);
   }, [dispatch]);
 
   const handleChangeFilter = (e) => {

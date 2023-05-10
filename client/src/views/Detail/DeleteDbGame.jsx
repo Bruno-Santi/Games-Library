@@ -1,28 +1,37 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteGame } from "../../redux/actions";
+
+import style from "../../views/Home/Home.module.css";
 const DeleteDbGame = ({ id }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const game = useSelector((state) => state.gameDeleted);
+  const [deletedGame, setDeletedGame] = useState(false);
+
   let regexUUID =
     /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
-  let [gameDeleted, setGameDeleted] = useState("");
-  const handleClick = async () => {
-    let response = await axios.delete(`http://localhost:3001/videogames/${id}`);
-    console.log(response);
-    setGameDeleted(response.data);
+
+  const handleClick = () => {
+    dispatch(deleteGame(id));
+    setDeletedGame(true);
     setTimeout(() => {
       navigate("/home");
     }, 5000);
   };
   if (regexUUID.test(id)) {
     return (
-      <>
-        {gameDeleted ? (
-          <h3>{gameDeleted}. Volviendo a home...</h3>
+      <div className={style.gameDeleted}>
+        {deletedGame ? (
+          <h3 className={style.h3}>{game}. Backing home...</h3>
         ) : (
-          <button onClick={handleClick}>Delete</button>
+          <button className={style.myButton} onClick={handleClick}>
+            Delete
+          </button>
         )}
-      </>
+      </div>
     );
   } else {
     return <></>;

@@ -1,3 +1,4 @@
+import axios from "axios";
 const URL = "http://localhost:3001";
 // ! GET
 export const GET_GAMES = "GET_GAMES";
@@ -16,7 +17,8 @@ export const ORDER_GAMES_RATING = "ORDER_GAMES_RATING";
 export const SEND_FORM_DATA_REQUEST = "SEND_FORM_DATA_REQUEST";
 export const SEND_FORM_DATA_SUCCESS = "SEND_FORM_DATA_SUCCESS";
 export const SEND_FORM_DATA_FAILURE = "SEND_FORM_DATA_FAILURE";
-
+//! DELETE
+export const DELETE_GAME = "DELETE_GAME";
 // ! ///////////////// GET ////////////////
 
 //* GET usando async/await
@@ -114,6 +116,18 @@ export const sendFormData = (formData) => {
       )
       .catch((error) =>
         dispatch({ type: "SEND_FORM_DATA_FAILURE", payload: error })
+      );
+  };
+};
+
+// ! ///////////////// DELETE ////////////////
+
+export const deleteGame = (id) => {
+  return async function (dispatch) {
+    const response = await axios
+      .delete(`${URL}/videogames/${id}`)
+      .then((response) =>
+        dispatch({ type: DELETE_GAME, payload: response.data })
       );
   };
 };
